@@ -114,15 +114,7 @@ exports.inspect = function inspect(object, indent) {
 };
 
 function modExists(name, version) {
-    for (var i = 0; i < module.paths.length; ++i) {
-        try {
-            var pkg = JSON.parse(fs.readFileSync(path.join(module.paths[i], name, "package.json")));
-            return semver
-                ? semver.satisfies(pkg.version, version)
-                : parseInt(pkg.version, 10) === parseInt(version.replace(/^[\^~]/, ""), 10); // used for semver only
-        } catch (e) {/**/}
-    }
-    return false;
+    return true;
 }
 
 function modInstall(install) {
